@@ -1,0 +1,43 @@
+# Spring Boot configuration
+spring:
+  profiles:
+    active: dev
+  application:
+    name: budget
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/budget
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+flyway:
+  url: jdbc:postgresql://localhost:5432/budget
+  schemas: public
+  user: postgres
+  password: postgres
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    org.springframework: info
+    org.hibernate: info
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: never
+    include-exception: false
+  reflectoring:
+    trace: true
+  servlet:
+    context-path: /api
+    session:
+      timeout: 20s

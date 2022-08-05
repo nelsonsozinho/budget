@@ -1,0 +1,1 @@
+ALTER TABLE public.charge_user ALTER COLUMN refresh_token TYPE text USING refresh_token::text;

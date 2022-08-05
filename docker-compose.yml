@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.0.1
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      zk_id: "1"
+    ports:
+      - "2181:2181"
+    networks:
+      - spring
+
+  app-budget:
+    image: 'openjdk:11'
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - flyway
+      - zookeeper
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/budget
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - PROFILE=dev
+    networks:
+      - spring
+
+  flyway:
+    image: flyway/flyway:6.3.1
+    environment:
+      - FLYWAY_EDITION=community
+    command:
+      -url=jdbc:postgresql://db:5432/budget
+      -schemas=public
+      -user=postgres
+      -password=postgres
+      -connectRetries=10 migrate
+    volumes:
+      - /src/resources/db/migration:/migration
+    depends_on:
+      - db
+    networks:
+      - spring
+
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=budget
+    networks:
+      - spring
+    ports:
+      - "5432:5432"
+
+networks:
+  spring:
+    driver: bridge

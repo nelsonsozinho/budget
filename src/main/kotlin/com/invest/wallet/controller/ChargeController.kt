@@ -1,0 +1,54 @@
+package com.invest.wallet.controller
+
+import com.invest.wallet.controller.rest.ChargeRest
+import com.invest.wallet.model.Charge
+import com.invest.wallet.service.ChargeService
+import java.util.UUID
+import org.springframework.http.HttpStatus
+import org.springframework.http.MediaType
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.ResponseStatus
+import org.springframework.web.bind.annotation.RestController
+
+
+@RestController
+@RequestMapping(value = ["/charge"], produces = [MediaType.APPLICATION_JSON_VALUE])
+class ChargeController(
+    private val walletService: ChargeService
+) {
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    fun getBudgetById(@PathVariable("id") id: UUID): ResponseEntity<ChargeRest> {
+        val charge = walletService.findById(id)
+        return ResponseEntity<ChargeRest>(ChargeRest(charge.id, charge.amount, charge.tag, charge.description), HttpStatus.OK)
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    fun listAllBudgets():List<ChargeRest> {
+        return walletService.findAll().mapNotNull { ChargeRest(it.id, it.amount, it.tag, it.description) }.toMutableList()
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    fun newBudget(@RequestBody charge: ChargeRest): ResponseEntity<ChargeRest> {
+        val wallet = walletService.saveCharge(Charge(description = charge.description, amount = charge.amount, tag = charge.tag))
+        return ResponseEntity<ChargeRest>(ChargeRest(wallet.id, wallet.amount, wallet.tag, wallet.description), HttpStatus.CREATED)
+    }
+
+    @GetMapping("/user/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    fun listBudgetsByUserId(@PathVariable(name="id") id: UUID): ResponseEntity<MutableList<ChargeRest>> {
+        val wallets = walletService.listAllChargesByUserId(id)
+        val walletRest: MutableList<ChargeRest> = wallets.map { ChargeRest(it.id, it.amount, it.tag, it.description) }.toMutableList()
+        return ResponseEntity<MutableList<ChargeRest>>(walletRest, HttpStatus.OK)
+    }
+
+}
+

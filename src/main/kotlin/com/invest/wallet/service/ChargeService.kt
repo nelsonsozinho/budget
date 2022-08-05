@@ -23,7 +23,8 @@ class ChargeService(
     }
 
     fun findAll(): List<Charge> {
-        return chargeRepository.findAll()
+        val user = userService.findUserByUserName(SecurityContextHolder.getContext().authentication.principal as String);
+        return chargeRepository.findChargesByUserId(user.id)
     }
 
     @Transactional

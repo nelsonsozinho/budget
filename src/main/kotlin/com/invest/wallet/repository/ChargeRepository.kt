@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface ChargeRepository: JpaRepository<Charge, UUID> {
 
-    fun findChargesByUserId(id: UUID): List<Charge>
+    fun findChargesByUserId(id: UUID?): List<Charge>
 
 }

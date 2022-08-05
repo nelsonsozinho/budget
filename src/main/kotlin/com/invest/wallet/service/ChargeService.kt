@@ -18,7 +18,8 @@ class ChargeService(
 ) {
 
     fun findById(id: UUID): Charge {
-        return chargeRepository.findById(id).orElseThrow { NoSuchElementFoundException(HttpStatus.NOT_FOUND,
+        val user = userService.findUserByUserName(SecurityContextHolder.getContext().authentication.principal as String);
+        return chargeRepository.findChargeByIdAndUser(id, user).orElseThrow { NoSuchElementFoundException(HttpStatus.NOT_FOUND,
             HttpErrorMessage.OBJECT_HOT_FOUND.message.replace("{id}", id.toString())) }
     }
 

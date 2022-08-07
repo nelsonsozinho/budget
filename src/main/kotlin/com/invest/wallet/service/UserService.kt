@@ -1,6 +1,7 @@
 package com.invest.wallet.service
 
 import com.invest.wallet.controller.error.TokenRefreshException
+import com.invest.wallet.controller.error.UserWithSameLoginException
 import com.invest.wallet.controller.rest.RefreshTokenRest
 import com.invest.wallet.model.User
 import com.invest.wallet.repository.UserRepository
@@ -17,7 +18,11 @@ class UserService(
 ) {
 
     fun saveUser(user: User): User {
-        return userRepository.save(user)
+        val userSameLogin = userRepository.findUserByUsername(user.username)
+        if(userSameLogin.isEmpty)
+            return userRepository.save(user)
+
+        throw UserWithSameLoginException(user.username!!, "You already has account")
     }
 
     fun findUserByRefreshToken(refreshToken: String): Optional<User> {

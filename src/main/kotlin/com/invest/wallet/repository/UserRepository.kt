@@ -15,7 +15,7 @@ interface UserRepository: JpaRepository<User, UUID> {
 
     fun findUserById(userId: UUID): Optional<User>
 
-    fun findUserByUsername(username: String): Optional<User>
+    fun findUserByUsername(username: String?): Optional<User>
 
     fun deleteUserById(userId: UUID)
 

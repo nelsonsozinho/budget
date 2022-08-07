@@ -27,7 +27,7 @@ class UserController(
         userRest.password = passwordEncoder.encode(userRest.password)
         val user = userRest.toUser()
         val newUser: User = userService.saveUser(user)
-        return ResponseEntity.ok(newUser.toUserRest())
+        return ResponseEntity(newUser.toUserRest(), HttpStatus.CREATED)
     }
 
 }

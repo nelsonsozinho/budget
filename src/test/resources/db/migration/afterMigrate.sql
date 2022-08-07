@@ -20,3 +20,4 @@ INSERT INTO users_roles(user_id, role_id) VALUES ('9f3a280c-3903-4fe6-b503-c41de
 --New charges
 INSERT INTO public.charge(id,  description, amount, "tag", user_id, last_modified_at) VALUES('9a65975c-8490-4856-b757-db0564a5215d', 'Room', 120.90, 'King size bed', '789eae4c-1bcf-48c5-beb0-fb5a80c36927', '2020-10-10');
 INSERT INTO public.charge(id,  description, amount, "tag", user_id, last_modified_at) VALUES('316e4e83-6cb9-42fb-8ab7-3d6e784a0712', 'Bathroom', 30.55, 'grilled soap', '789eae4c-1bcf-48c5-beb0-fb5a80c36927', '2020-10-10');
+INSERT INTO public.charge(id,  description, amount, "tag", user_id, last_modified_at) VALUES('ba1fad1c-ab94-4ba4-b34d-a28c632078b3', 'Kitchen', 20.55, 'Wall oven', '9f3a280c-3903-4fe6-b503-c41de9a3e9c9', '2020-10-10');

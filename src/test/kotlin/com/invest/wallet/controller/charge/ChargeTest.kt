@@ -1,17 +1,17 @@
-package com.invest.wallet.controller.wallet
+package com.invest.wallet.controller.charge
 
 import com.invest.wallet.TestEnvironmentConfigTest
 import org.junit.jupiter.api.Test
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.get
 
-class WalletTest: TestEnvironmentConfigTest() {
+class ChargeTest: TestEnvironmentConfigTest() {
 
 
     @Test
-    fun `test get wallet by id`() {
+    fun `test get charge by id`() {
         mockMvc
-            .get("/budget/{id}", "9a65975c-8490-4856-b757-db0564a5215d") {
+            .get("/charge/{id}", "9a65975c-8490-4856-b757-db0564a5215d") {
                 headers {
                     header("Authorization", getUserToken()!!)
                     header("Content-Type", "application/json")
@@ -27,9 +27,9 @@ class WalletTest: TestEnvironmentConfigTest() {
     }
 
     @Test
-    fun `list all wallets`() {
+    fun `list all charges`() {
         mockMvc
-            .get("/wallet") {
+            .get("/charge") {
                 headers {
                     header("Authorization", getUserToken()!!)
                     header("Content-Type", "application/json")

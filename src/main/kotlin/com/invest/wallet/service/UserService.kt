@@ -6,10 +6,9 @@ import com.invest.wallet.controller.rest.RefreshTokenRest
 import com.invest.wallet.model.User
 import com.invest.wallet.repository.UserRepository
 import com.invest.wallet.utils.JwtUtils
-import java.time.Instant
-import java.util.Optional
-import java.util.UUID
 import org.springframework.stereotype.Service
+import java.time.Instant
+import java.util.*
 
 @Service
 class UserService(

@@ -1,7 +1,7 @@
 package com.invest.wallet.controller.rest
 
 import com.invest.wallet.model.User
-import java.util.UUID
+import java.util.*
 
 data class UserRest(
     var id: UUID?,

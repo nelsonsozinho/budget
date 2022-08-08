@@ -3,13 +3,12 @@ package com.invest.wallet.service
 import com.invest.wallet.controller.error.NoSuchElementFoundException
 import com.invest.wallet.controller.error.message.HttpErrorMessage
 import com.invest.wallet.model.Charge
-import com.invest.wallet.model.User
 import com.invest.wallet.repository.ChargeRepository
-import java.util.UUID
-import javax.transaction.Transactional
 import org.springframework.http.HttpStatus
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
+import java.util.*
+import javax.transaction.Transactional
 
 @Service
 class ChargeService(

@@ -1,21 +1,11 @@
 package com.invest.wallet.model
 
 import com.invest.wallet.controller.rest.UserRest
-import java.io.Serializable
-import java.util.UUID
-import javax.persistence.CascadeType
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.FetchType
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.JoinTable
-import javax.persistence.ManyToMany
-import javax.persistence.OneToMany
-import javax.persistence.Table
 import org.hibernate.annotations.GenericGenerator
 import org.hibernate.annotations.Type
+import java.io.Serializable
+import java.util.*
+import javax.persistence.*
 
 @Entity
 @Table(name = "charge_user")

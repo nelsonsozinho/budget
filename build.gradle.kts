@@ -41,10 +41,11 @@ dependencies {
 	implementation("io.jsonwebtoken:jjwt-api:0.11.2")
 
 	implementation("io.lettuce:lettuce-core:6.1.6.RELEASE")
-	implementation("org.springframework.kafka:spring-kafka:2.8.1")
 	implementation("com.fasterxml.jackson.core:jackson-databind:2.13.1")
 
 	implementation("org.flywaydb:flyway-core:8.4.2")
+	implementation("io.springfox:springfox-swagger2:3.0.0")
+	implementation("io.springfox:springfox-swagger-ui:3.0.0")
 
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")

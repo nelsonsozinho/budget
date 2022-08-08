@@ -3,7 +3,6 @@ package com.invest.wallet.controller.charge
 import com.invest.wallet.TestEnvironmentConfigTest
 import org.junit.jupiter.api.Test
 import org.springframework.http.MediaType
-import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
 
 class UserTest: TestEnvironmentConfigTest() {

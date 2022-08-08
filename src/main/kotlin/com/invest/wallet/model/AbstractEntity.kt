@@ -1,15 +1,15 @@
 package com.invest.wallet.model
 
+import org.hibernate.annotations.GenericGenerator
+import org.hibernate.annotations.Type
+import org.springframework.data.annotation.LastModifiedDate
 import java.io.Serializable
 import java.time.LocalDateTime
-import java.util.UUID
+import java.util.*
 import javax.persistence.Column
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.MappedSuperclass
-import org.hibernate.annotations.GenericGenerator
-import org.hibernate.annotations.Type
-import org.springframework.data.annotation.LastModifiedDate
 
 @MappedSuperclass
 abstract class AbstractEntity: Serializable {

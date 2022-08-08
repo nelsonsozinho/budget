@@ -3,11 +3,9 @@ package com.invest.wallet.utils
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
-import java.time.Instant
-import java.util.Calendar
-import java.util.Date
-import org.springframework.security.core.userdetails.User
 import org.springframework.stereotype.Component
+import java.time.Instant
+import java.util.*
 
 @Component
 class JwtUtils(

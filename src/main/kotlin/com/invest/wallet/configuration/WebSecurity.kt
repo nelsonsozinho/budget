@@ -45,7 +45,6 @@ class WebSecurity(
             .antMatchers("/error/**").permitAll()
             .antMatchers(HttpMethod.POST, "/login").permitAll()
             .antMatchers(HttpMethod.POST, "/user").permitAll()
-            .antMatchers("/swagger-ui").permitAll()
             .anyRequest().authenticated()
             .and()
             .addFilter(JWTAuthenticationFilter(authenticationManager(), securityProperties, jwtUtils, userService))

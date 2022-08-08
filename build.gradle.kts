@@ -35,7 +35,6 @@ dependencies {
 	implementation("org.springframework.data:spring-data-couchbase:4.4.2")
 	implementation("org.hibernate.validator:hibernate-validator:7.0.4.Final")
 
-
 	implementation("io.jsonwebtoken:jjwt-jackson:0.11.2")
 	implementation("io.jsonwebtoken:jjwt-impl:0.11.2")
 	implementation("io.jsonwebtoken:jjwt-api:0.11.2")
@@ -44,8 +43,6 @@ dependencies {
 	implementation("com.fasterxml.jackson.core:jackson-databind:2.13.1")
 
 	implementation("org.flywaydb:flyway-core:8.4.2")
-	implementation("io.springfox:springfox-swagger2:3.0.0")
-	implementation("io.springfox:springfox-swagger-ui:3.0.0")
 
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
